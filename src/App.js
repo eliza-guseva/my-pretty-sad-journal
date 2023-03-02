@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className='Body'>
+        <h1>My pretty sad journal</h1>
+        <div className='page'>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          I'm a sad person. I have sad logs. Very sad logs. 
+          </p>
+          <p id='poem'>
+          The weight of sorrow, heavy and deep
+          A shadow that never seems to sleep
+          Heartache that pierces like a knife
+          Pain that consumes my every life
+          </p>
+          <p>
+          Memories of what once was bright
+          Now faded and lost in the night
+          The emptiness that fills my soul
+          Aching for something to make me whole
+          </p>
+          <p>
+          Oh, how I long to be free
+          From this sadness that's consuming me
+          But for now, I'll bear this heavy load
+          And hope that someday, I'll find the road.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        </div>
+        <div className='page'>
+          </div>
+      </div>
     </div>
   );
 }

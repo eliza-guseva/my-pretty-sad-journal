@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Journal from './components/Journal';
 
 function App() {
 
@@ -13,16 +14,7 @@ function App() {
     <div className="App">
       <div className='Body'>
         <h1>My pretty sad journal</h1>
-        <div className='page'>
-          <textarea 
-            id="textarea1" 
-            name="name" 
-            rows="15" 
-            cols="100" 
-            placeholder="Your text here "
-            onInput={handleTextArea}>
-          </textarea>
-        </div>
+        <Journal textArea={handleTextArea}/>
       </div>
     </div>
   );

@@ -85,7 +85,7 @@ p {
 #textarea1 {
   font-family: 'Josefin Slab', serif;
   font-size: 22px;
-  width: 38%;
+  width: 37%;
   height: 70vh;
   margin: 15px auto;
   line-height: 1.2;
@@ -93,5 +93,7 @@ p {
   background-color: rgb(195, 193, 212);
   display: block;
   resize: none;
+  border: 3px solid #818da4;
+  border-radius: 8px;
 }
 

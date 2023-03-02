@@ -16,7 +16,6 @@ function App() {
         <div className='page'>
           <textarea 
             id="textarea1" 
-            class="input shadow" 
             name="name" 
             rows="15" 
             cols="100" 

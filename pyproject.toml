@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "my-pretty-sad-journal"
+version = "0.1.0"
+description = ""
+authors = ["EG"]
+readme = "README.md"
+repository = "https://github.com/eliza-guseva/my-pretty-sad-journal"
+classifiers = [
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux"
+]
+
+[tool.poetry.dependencies]
+python = "3.11.*"
+Flask="2.2.*"
+Flask_RESTful="0.3.*"
+Flask_Cors="3.0.*"

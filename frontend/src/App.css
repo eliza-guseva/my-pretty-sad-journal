@@ -111,3 +111,16 @@ p {
   border-radius: 8px;
 }
 
+#flask {
+  font-family: 'ShineOn';
+  font-size: 30px;
+  width: 36%;
+  margin: 15px auto;
+  line-height: 1.2;
+  text-align: justify;
+  background-color: rgb(195, 193, 212);
+  display: block;
+  resize: none;
+  border: 3px solid #818da4;
+  border-radius: 8px;
+}

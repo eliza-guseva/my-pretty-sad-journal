@@ -37,7 +37,7 @@ function App() {
         <EntryDate dateArea={processDate} theDate={myDate}/>
         <Journal textArea={handleTextArea}/>
       </div>
-      <div>{getMessage.status === 200 ? 
+      <div id='flask'>{getMessage.status === 200 ? 
           <h3>{getMessage.data.message}</h3>
           :
           <h3>LOADING</h3>}</div>

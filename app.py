@@ -8,8 +8,15 @@ app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 CORS(app) #comment this on deployment
 api = Api(app)
 
-@app.route("/", defaults={'path':''})
-def serve(path):
-    return send_from_directory(app.static_folder,'index.html')
+# @app.route("/", defaults={'path':''})
+# def serve(path):
+#     return send_from_directory(app.static_folder,'index.html')
+
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
 api.add_resource(ColorfulApiHandler, '/flask/hello')
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

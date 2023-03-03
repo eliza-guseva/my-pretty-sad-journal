@@ -5,7 +5,7 @@ class ColorfulApiHandler(Resource):
   def get(self):
     return {
       'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
+      'message': "Hello Flask and hello Gunicorn!"
       }
 
   def post(self):

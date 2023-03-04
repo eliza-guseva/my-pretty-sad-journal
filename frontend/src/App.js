@@ -3,12 +3,15 @@ import axios from 'axios';
 import './App.css';
 import Journal from './components/Journal';
 import EntryDate from './components/Date';
+import Mood from './components/Mood';
 
 function App() {
 
   let today  = new Date().toLocaleDateString("en-US")
   const [myDate, setMyDate] = useState(today)
   const [myTxt, setMyTxt] = useState('')
+
+  const [getMessage, setGetMessage] = useState({})
 
   const processDate = (e) => {
     setMyDate(myDate)
@@ -20,25 +23,9 @@ function App() {
     console.log(e.target.value)
   }
 
-  const [getMessage, setGetMessage] = useState({})
-  useEffect(()=>{
-    axios.post('http://localhost:5000/flask/hello', {
-      type: 'Fred',
-      message: 'Flintstone'
-    })
-    .then(function (response) {
-      console.log(response)
-      setGetMessage(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    // axios.get('http://localhost:5000/flask/hello').then(response => {
-    //   console.log("SUCCESS", response)
-    //   setGetMessage(response)
-    // }).catch(error => {
-    //   console.log(error)})
-    }, [])
+  const handleFlask = (e) => {
+    setGetMessage(getMessage)
+  }
 
   return (
     <div className="App">
@@ -46,11 +33,12 @@ function App() {
         <h1>My pretty sad journal</h1>
         <EntryDate dateArea={processDate} theDate={myDate}/>
         <Journal textArea={handleTextArea}/>
+        <Mood 
+          flask={handleFlask} 
+          getMessage={getMessage} 
+          setGetMessage={setGetMessage}
+        />
       </div>
-      <div id='flask'>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
-          :
-          <h3>LOADING</h3>}</div>
     </div>
   );
 }

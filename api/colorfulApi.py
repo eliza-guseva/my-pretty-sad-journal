@@ -28,7 +28,7 @@ class ColorfulApiHandler(Resource):
     ret_msg = request_json
 
     if ret_msg:
-      message = "Your Message Requested: {}".format(ret_msg)
+      message = f"The date is: {ret_msg[:30]}"
     else:
       message = "No Msg"
     

@@ -23,10 +23,6 @@ function App() {
     console.log(e.target.value)
   }
 
-  const handleFlask = (e) => {
-    setGetMessage(getMessage)
-  }
-
   return (
     <div className="App">
       <div className='Body'>
@@ -34,7 +30,6 @@ function App() {
         <EntryDate dateArea={processDate} theDate={myDate}/>
         <Journal textArea={handleTextArea}/>
         <Mood 
-          flask={handleFlask} 
           getMessage={getMessage} 
           setGetMessage={setGetMessage}
         />

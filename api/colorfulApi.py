@@ -2,10 +2,11 @@
 from flask_restful import Api, Resource, reqparse
 
 class ColorfulApiHandler(Resource):
-  def get(self):
+  def get(self, message):
+    the_message = ' '.join(list(message.values()))
     return {
       'resultStatus': 'SUCCESS',
-      'message': "Hello Flask and hello Gunicorn!"
+      'message': the_message
       }
 
   def post(self):

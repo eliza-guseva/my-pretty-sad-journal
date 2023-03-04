@@ -93,7 +93,7 @@ p {
   background-color: rgb(195, 193, 212);
   display: block;
   resize: none;
-  border: 3px solid #818da4;
+  border: 3px solid rgb(129, 141, 164);
   border-radius: 8px;
 }
 

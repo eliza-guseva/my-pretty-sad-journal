@@ -33,4 +33,4 @@ const Mood = ({getMessage, setGetMessage, myTxt}) => {
     )
 }
 
-export default Mood
+export default Mood;

@@ -7,8 +7,8 @@ const Date = ({dateArea, theDate}) => {
             rows="1" 
             cols="100" 
             onInput={dateArea}
+            defaultValue={theDate}
             >
-                {theDate}
           </textarea>
         </div>
     )

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import './App.css';
 import Journal from './components/Journal';
 import EntryDate from './components/Date';
@@ -11,16 +10,16 @@ function App() {
   const [myDate, setMyDate] = useState(today)
   const [myTxt, setMyTxt] = useState('')
 
+
   const [getMessage, setGetMessage] = useState({})
 
   const processDate = (e) => {
-    setMyDate(myDate)
     console.log(e.target.value)
   }
 
   const handleTextArea = (e) => {
-    setMyTxt(myTxt)
-    console.log(e.target.value)
+    const inputText = e.target.value
+    setMyTxt(inputText)
   }
 
   return (
@@ -32,6 +31,7 @@ function App() {
         <Mood 
           getMessage={getMessage} 
           setGetMessage={setGetMessage}
+          myTxt={myTxt}
         />
       </div>
     </div>

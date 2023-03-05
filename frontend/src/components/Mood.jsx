@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
-const Mood = ({getMessage, setGetMessage, myTxt}) => {
+const Mood = ({getMessage, setGetMessage, myTxt, setStyle}) => {
     let myArray = myTxt.split(/[.!?]/)
     console.log(myArray)
     let myMessage = myArray.slice(-1)[0]
@@ -24,9 +24,11 @@ const Mood = ({getMessage, setGetMessage, myTxt}) => {
         });
         }, [myTxt]) 
 
+    
+
     return (
         <div id='flask'>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
+            console.log(getMessage)
           :
           <h3>LOADING</h3>}
           </div>

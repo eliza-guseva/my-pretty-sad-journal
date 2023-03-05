@@ -2,6 +2,19 @@
 from flask_restful import Api, Resource, reqparse
 from transformers import pipeline
 
+
+COLORS = {
+    "neutral": (125, 125, 125),
+    "surprise": (121, 252, 214),
+    "joy": (250, 220, 120),
+    "sadness": (76, 94, 134),
+    "fear": (91, 64, 100),
+    "love": (246, 194, 226),
+    "anger": (164, 61, 61),
+    "disgust": (188, 152, 98),
+}
+
+
 class ColorfulApiHandler(Resource):
     neutral_classifier = pipeline(
         "text-classification", 
@@ -9,17 +22,12 @@ class ColorfulApiHandler(Resource):
         return_all_scores=False
     )
 
-    angry_classifier = pipeline(
-        "text-classification",
-        model="bhadresh-savani/distilbert-base-uncased-emotion",
-        return_all_scores=False
-    )
-
     def get(self, message):
         label, score = self.get_sentiment(message)
+        rgb = self.make_color(label, score)
         return {
             'resultStatus': 'SUCCESS',
-            'message': f"Sentiment: {label} with score {score}"
+            'message': f"Sentiment: {label}: {rgb}"
         }
 
     def post(self):
@@ -42,27 +50,33 @@ class ColorfulApiHandler(Resource):
 
         if ret_msg:
             label, score, source = self.get_sentiment(ret_msg)
-            message = f"Sentiment: {label} with score {score:.2f}: from {source}"
+            rgb = self.make_color(label, score)
+            message = self.rgb_to_hex([round(c) for c in rgb])
+            print(message)
         else:
-            message = "No Msg"
+            message = "Silence everywhere"
         
         final_ret = {"status": "Success", "message": message}
 
         return final_ret
 
     def get_sentiment(self, text):
-        angry = self.angry_classifier(text)[0]
         neutral = self.neutral_classifier(text)[0]
         return neutral['label'], neutral['score'], 'neutral'
-        # is_false_angry = angry['label'] == 'anger' and angry['score'] < 0.90
-        
-        # if neutral['score'] >= angry['score']:
-        #     top_label = neutral
-        #     top_label['source'] = 'neutral'
-        #     if top_label['score'] < 0.5:
-        #         top_label['label'] = 'neutral'
-        # else:
-        #     top_label = angry
-        #     top_label['source'] = 'angry'
-        # return top_label['label'], top_label['score'], top_label['source']
+    
+    @staticmethod
+    def make_color(sentiment_label, sentiment_score):
+        color = COLORS[sentiment_label]
+        neutral = [sum(COLORS[sentiment_label]) / 3]*3
+        variaton = [
+            (color[c] * sentiment_score + neutral[c] * (1 - sentiment_score)) 
+            for c in range(3) 
+        ]
+        return variaton
+    
+    @staticmethod
+    def rgb_to_hex(rgb_tuple):
+        return '#{:02x}{:02x}{:02x}'.format(*rgb_tuple)
+
+
 

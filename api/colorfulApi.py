@@ -1,5 +1,5 @@
 
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Resource, reqparse
 from transformers import pipeline
 
 

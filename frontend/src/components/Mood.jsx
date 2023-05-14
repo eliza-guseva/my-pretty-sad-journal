@@ -6,12 +6,14 @@ const Mood = ({getMessage, setGetMessage, myTxt, setStyle}) => {
     console.log(myArray)
     let myMessage = myArray.slice(-1)[0]
     console.log(myMessage)
+    console.log(process.env.REACT_APP_BACKEND_ADDR)
+    console.log("YAY")
     if (myMessage.length < 2) {
         myMessage = myArray.slice(-2)[0]
     };
     
     useEffect(()=>{
-        axios.post('http://localhost:5000/flask/hello', {
+        axios.post(process.env.REACT_APP_BACKEND_ADDR, {
         type: 'words',
         message: myMessage
         })
